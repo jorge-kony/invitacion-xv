@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación XV Años - Victoria</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f6f1;
+      color: #333;
+    }
+    h1, h2, h3 {
+      font-family: 'Dancing Script', cursive;
+    }
+    .gold {
+      color: #d4af37;
+    }
+    /* Línea de itinerario */
+    .timeline {
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: #e5e5e5;
+    }
+    .timeline-step {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .timeline-step::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 0.5rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #e5e5e5;
+      transition: background 0.5s ease;
+    }
+    .timeline-step.active::before {
+      background: #d4af37;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- (3)(4) Portada de sobre fullscreen -->
+  <div id="overlay" class="fixed inset-0 z-50">
+    <img src="sobre.jpeg" alt="Sobre de invitación" class="w-[900px] h-[1000px] object-cover cursor-pointer" id="openEnvelope">
+  </div>
+
+  <!-- Música -->
+  <audio id="bgMusic" loop>
+    <source src="OJITOS MENTIROSOS (1).mp3" type="audio/mpeg">
+  </audio>
+  <button id="musicBtn" class="hidden fixed bottom-4 left-4 bg-[#d4af37] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+    ⏸
+  </button>
+
+  <!-- (2) Portada -->
+  <section id="portada" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+    <h1 class="text-5xl gold">Mis XV Años</h1>
+    <h2 class="text-4xl mt-4">Victoria</h2>
+    <p class="mt-2 text-lg">01 de Julio 2027</p>
+  </section>
+
+  <!-- (9) Padres y padrinos -->
+  <section class="py-12 px-6 text-center">
+    <p class="text-sm">Con la bendición de Dios y en compañía de mis padres y padrinos</p>
+    <h2 class="text-2xl gold mt-6">Mis Padres</h2>
+    <p>Sr. Roberto González Treviño</p>
+    <p>Sra. Ana Garza Martínez</p>
+
+    <h2 class="text-2xl gold mt-6">Mis Padrinos</h2>
+    <p>Sr. Eduardo Castillo Torres</p>
+    <p>Sra. María Gallardo Campos</p>
+
+    <p class="mt-8 text-sm">Nos complace invitarte a ser parte de este gran día.</p>
+  </section>
+
+  <!-- (8) Cuenta regresiva -->
+  <section class="py-12 text-center bg-white">
+    <h2 class="text-2xl gold mb-6">Faltan para la fiesta</h2>
+    <div id="countdown" class="text-xl font-semibold"></div>
+  </section>
+
+  <!-- (6) Dónde y cuándo -->
+  <section class="py-12 px-6 text-center">
+    <h2 class="text-3xl gold mb-6">Dónde y Cuándo</h2>
+    <img src="recepcion.jpg" alt="Lugar" class="mx-auto rounded-2xl shadow-lg mb-6">
+    <h3 class="text-xl font-bold">Salón de eventos</h3>
+    <p class="text-sm">Dirección completa aquí</p>
+    <p class="text-sm">7:00 PM</p>
+    <a href="https://maps.app.goo.gl/ttuEqYvGwJ6Ufk8c9" target="_blank" class="mt-4  mb-12 inline-block px-4 py-2 bg-[#d4af37] text-white rounded-lg">Ver en Google Maps</a>
+    
+    <img src="ubicacion.jpg" alt="Lugar" class="mx-auto rounded-2xl shadow-lg mb-6">
+    <h3 class="text-xl font-bold mt-6">Ceremonia religiosa</h3>
+    <p class="text-sm">Dirección de iglesia aquí</p>
+    <p class="text-sm">5:00 PM</p>
+    <a href="https://maps.app.goo.gl/yWp88HPhZer9Dyj69" target="_blank" class="mt-4 inline-block px-4 py-2 bg-[#d4af37] text-white rounded-lg">Ver en Google Maps</a>
+  </section>
+
+  <!-- (7) Itinerario animado -->
+  <section class="py-12 px-6">
+    <h2 class="text-3xl gold text-center mb-8">Itinerario</h2>
+    <div class="timeline ">
+      <div class="timeline-step" data-step="1">
+        <h3 class="font-bold">Ceremonia religiosa - 5:00 PM</h3>
+        <p class="text-sm">Misa de acción de gracias</p>
+      </div>
+      <div class="timeline-step" data-step="2">
+        <h3 class="font-bold">Presentación - 7:00 PM</h3>
+        <p class="text-sm">Bienvenida en el salón</p>
+      </div>
+      <div class="timeline-step" data-step="3">
+        <h3 class="font-bold">Comida - 8:00 PM</h3>
+        <p class="text-sm">Banquete para los invitados</p>
+      </div>
+      <div class="timeline-step" data-step="4">
+        <h3 class="font-bold">Baile - 10:00 PM</h3>
+        <p class="text-sm">¡A disfrutar la fiesta!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (1) Confirmación -->
+  <section class="py-12 px-6 text-center">
+    <h2 class="text-3xl gold mb-6">Confirma tu asistencia</h2>
+    <form id="confirmForm" class="space-y-4">
+      <input type="text" id="familia" placeholder="Nombre de la familia" class="w-full border p-2 rounded">
+      <input type="number" id="numPersonas" placeholder="Número de personas" class="w-full border p-2 rounded">
+      <textarea id="nombres" placeholder="Nombres de los asistentes" class="w-full border p-2 rounded"></textarea>
+      <button type="submit" class="px-4 py-2 bg-[#d4af37] text-white rounded-lg">Enviar confirmación</button>
+    </form>
+  </section>
+
+  <!-- (11) Código de vestimenta -->
+  <section class="py-12 text-center">
+    <h2 class="text-3xl gold mb-6">Código de vestimenta</h2>
+    <p>Formal - El color dorado está reservado para la festejada.</p>
+  </section>
+
+  <!-- (5) Galería carrusel -->
+  <section class="py-12 text-center">
+    <h2 class="text-3xl gold mb-6">Galería</h2>
+    <div class="relative w-full overflow-hidden">
+      <div id="carousel" class="flex transition-transform duration-700">
+        <!-- Agregar fotos -->
+        <img src="chica1.jpg" class="w-full rounded-lg">
+        <img src="chica2.jpg" class="w-full rounded-lg">
+        <img src="chica3.jpg" class="w-full rounded-lg">
+        <img src="chica4.jpg" class="w-full rounded-lg">
+        <img src="chica1.jpg" class="w-full rounded-lg">
+        <img src="chica3.jpg" class="w-full rounded-lg">
+      </div>
+      <button id="prev" class="absolute top-1/2 left-2 bg-[#d4af37] text-white p-2 rounded-full">‹</button>
+      <button id="next" class="absolute top-1/2 right-2 bg-[#d4af37] text-white p-2 rounded-full">›</button>
+    </div>
+  </section>
+
+  <!-- (10) Regalos -->
+  <section class="py-12 px-6 text-center">
+    <h2 class="text-3xl gold mb-6">Regalos</h2>
+    <p>El regalo es opcional, la asistencia una vezs sea confirmada se obligatoria.</p>
+    <button id="toggleGift" class="mt-4 px-4 py-2 bg-[#d4af37] text-white rounded-lg">Ver número de cuenta</button>
+    <div id="giftInfo" class="hidden mt-4">
+      <p>Santander</p>
+      <p>ES99 0000 0000 0000</p>
+      <p>Andrés González González</p>
+      <p>Caja de sobres</p>
+    </div>
+  </section>
+
+  <!-- (12) Playlist -->
+  <section class="py-12 text-center">
+    <h2 class="text-3xl gold mb-6">Agrega música</h2>
+    <a href="https://www.youtube.com/playlist?list=PLbsEjFXZEm79YkV15gIi7N6qOF4_eFRUx&jct=InZBt-DH9de97asDhziWfw" target="_blank" class="px-4 py-2 bg-[#d4af37] text-white rounded-lg">Ir a la Playlist</a>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // (3)(4) Portada sobre + música
+    const overlay = document.getElementById("overlay");
+    const openEnvelope = document.getElementById("openEnvelope");
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+
+    openEnvelope.addEventListener("click", () => {
+      overlay.style.display = "none";
+      music.play();
+      musicBtn.classList.remove("hidden");
+    });
+
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "⏸";
+      } else {
+        music.pause();
+        musicBtn.textContent = "▶";
+      }
+    });
+
+    // (8) Cuenta regresiva
+    const countdown = document.getElementById("countdown");
+    const eventDate = new Date("July 1, 2027 00:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+      const seconds = Math.floor((distance % (1000*60))/1000);
+      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+
+    // (1) WhatsApp confirmación
+    document.getElementById("confirmForm").addEventListener("submit", (e)=>{
+      e.preventDefault();
+      let familia = document.getElementById("familia").value;
+      let num = document.getElementById("numPersonas").value;
+      let nombres = document.getElementById("nombres").value;
+      let mensaje = `Hola, confirmamos asistencia:\nFamilia: ${familia}\nPersonas: ${num}\nNombres: ${nombres}`;
+      let url = `https://wa.me/523322059293?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    });
+
+    // (5) Carrusel
+    const carousel = document.getElementById("carousel");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    let index = 0;
+    const slides = carousel.children.length;
+
+    function showSlide(i){
+      carousel.style.transform = `translateX(-${i*100}%)`;
+    }
+    next.addEventListener("click", ()=>{
+      index = (index+1) % slides;
+      showSlide(index);
+    });
+    prev.addEventListener("click", ()=>{
+      index = (index-1+slides) % slides;
+      showSlide(index);
+    });
+    setInterval(()=>{
+      index = (index+1) % slides;
+      showSlide(index);
+    }, 6000);
+
+    // (10) Regalos toggle
+    document.getElementById("toggleGift").addEventListener("click", ()=>{
+      document.getElementById("giftInfo").classList.toggle("hidden");
+    });
+
+    // (7) Itinerario animación al hacer scroll
+    const steps = document.querySelectorAll(".timeline-step");
+    window.addEventListener("scroll", ()=>{
+      const trigger = window.innerHeight * 0.8;
+      steps.forEach(step=>{
+        const rect = step.getBoundingClientRect();
+        if(rect.top < trigger){
+          step.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
