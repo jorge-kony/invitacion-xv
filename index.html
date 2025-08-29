@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/5d3b9e9c4b.js" crossorigin="anonymous"></script>
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -20,34 +23,31 @@
     h1, h2, h3 {
       font-family: 'Dancing Script', cursive;
     }
-    .gold {
-      color: #d4af37;
-    }
-    /* Línea de itinerario */
-    .timeline {
-      position: relative;
-    }
+    .gold { color: #d4af37; }
+
+    /* Timeline */
+    .timeline { position: relative; }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 12px;
+      left: 30px;
       top: 0;
       height: 100%;
-      width: 3px;
+      width: 4px;
       background: #e5e5e5;
     }
     .timeline-step {
       position: relative;
-      padding-left: 2.5rem;
-      margin-bottom: 2rem;
+      padding-left: 4.5rem;
+      margin-bottom: 3rem;
     }
     .timeline-step::before {
       content: '';
       position: absolute;
-      left: 5px;
-      top: 0.5rem;
-      width: 16px;
-      height: 16px;
+      left: 20px;
+      top: 0.8rem;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: #e5e5e5;
       transition: background 0.5s ease;
@@ -55,42 +55,54 @@
     .timeline-step.active::before {
       background: #d4af37;
     }
+    .timeline-icon {
+      position: absolute;
+      left: 22px;
+      top: 0.85rem;
+      color: white;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .timeline-step.active .timeline-icon {
+      opacity: 1;
+    }
   </style>
 </head>
 <body class="overflow-x-hidden">
 
   <!-- (3)(4) Portada de sobre fullscreen -->
   <div id="overlay" class="fixed inset-0 z-50">
-    <img src="sobre.jpeg" alt="Sobre de invitación" class="w-[900px] h-[1000px] object-cover cursor-pointer" id="openEnvelope">
+    <img src="Beautiful Monogram.jpeg" alt="Sobre de invitación" class="w-[400px] h-[900px] py-2 mt-4 rounded-2xl  cursor-pointer mx-auto" id="openEnvelope">
   </div>
 
   <!-- Música -->
   <audio id="bgMusic" loop>
-    <source src="OJITOS MENTIROSOS (1).mp3" type="audio/mpeg">
+    <source src="Mia & Sebastian's Theme (arr. for Piano).mp3" type="audio/mpeg">
   </audio>
-  <button id="musicBtn" class="hidden fixed bottom-4 left-4 bg-[#d4af37] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+  <button id="musicBtn" class="hidden fixed bottom-4 right-4 bg-[#d4af37] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
     ⏸
   </button>
 
   <!-- (2) Portada -->
-  <section id="portada" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+  <section id="portada" class=" min-h-screen flex flex-col items-center justify-center text-center px-6">
     <h1 class="text-5xl gold">Mis XV Años</h1>
     <h2 class="text-4xl mt-4">Victoria</h2>
     <p class="mt-2 text-lg">01 de Julio 2027</p>
   </section>
 
-  <!-- (9) Padres y padrinos -->
-  <section class="py-12 px-6 text-center">
-    <p class="text-sm">Con la bendición de Dios y en compañía de mis padres y padrinos</p>
-    <h2 class="text-2xl gold mt-6">Mis Padres</h2>
-    <p>Sr. Roberto González Treviño</p>
-    <p>Sra. Ana Garza Martínez</p>
+  <!-- (9) Padres y padrinos FULLSCREEN -->
+  <section class="h-screen flex flex-col items-center justify-center text-center px-6">
+    <p class="text-xl mb-4">Con la bendición de Dios y en compañía de mis padres y padrinos</p>
+    <h2 class="text-5xl gold mt-6">Mis Padres</h2>
+    <p class="text-3xl mt-2">Sr. Roberto González Treviño</p>
+    <p class="text-3xl">Sra. Ana Garza Martínez</p>
 
-    <h2 class="text-2xl gold mt-6">Mis Padrinos</h2>
-    <p>Sr. Eduardo Castillo Torres</p>
-    <p>Sra. María Gallardo Campos</p>
+    <h2 class="text-5xl gold mt-10">Mis Padrinos</h2>
+    <p class="text-3xl mt-2">Sr. Eduardo Castillo Torres</p>
+    <p class="text-3xl">Sra. María Gallardo Campos</p>
 
-    <p class="mt-8 text-sm">Nos complace invitarte a ser parte de este gran día.</p>
+    <p class=" mb-10 py-10 text-xl">Nos complace invitarte a ser parte de este gran día.</p>
   </section>
 
   <!-- (8) Cuenta regresiva -->
@@ -115,37 +127,41 @@
     <a href="https://maps.app.goo.gl/yWp88HPhZer9Dyj69" target="_blank" class="mt-4 inline-block px-4 py-2 bg-[#d4af37] text-white rounded-lg">Ver en Google Maps</a>
   </section>
 
-  <!-- (7) Itinerario animado -->
+  <!-- (7) Itinerario animado CON ICONOS -->
   <section class="py-12 px-6">
-    <h2 class="text-3xl gold text-center mb-8">Itinerario</h2>
-    <div class="timeline ">
+    <h2 class="text-4xl gold text-center mb-12 h-[45px]">Itinerario</h2>
+    <div class="timeline h-[1000px]">
       <div class="timeline-step" data-step="1">
-        <h3 class="font-bold">Ceremonia religiosa - 5:00 PM</h3>
-        <p class="text-sm">Misa de acción de gracias</p>
+        <i class="fas fa-church timeline-icon "></i>
+        <h3 class="text-2xl font-bold">Ceremonia religiosa - 5:00 PM</h3>
+        <p class="text-lg h-[200px] ">Misa de acción de gracias</p>
       </div>
       <div class="timeline-step" data-step="2">
-        <h3 class="font-bold">Presentación - 7:00 PM</h3>
-        <p class="text-sm">Bienvenida en el salón</p>
+        <i class="fas fa-door-open timeline-icon"></i>
+        <h3 class="text-2xl font-bold">Presentación - 7:00 PM</h3>
+        <p class="text-lg h-[200px]">Bienvenida en el salón</p>
       </div>
       <div class="timeline-step" data-step="3">
-        <h3 class="font-bold">Comida - 8:00 PM</h3>
-        <p class="text-sm">Banquete para los invitados</p>
+        <i class="fas fa-utensils timeline-icon"></i>
+        <h3 class="text-2xl font-bold">Comida - 8:00 PM</h3>
+        <p class="text-lg h-[200px]">Banquete para los invitados</p>
       </div>
       <div class="timeline-step" data-step="4">
-        <h3 class="font-bold">Baile - 10:00 PM</h3>
-        <p class="text-sm">¡A disfrutar la fiesta!</p>
+        <i class="fas fa-music timeline-icon"></i>
+        <h3 class="text-2xl font-bold">Baile - 10:00 PM</h3>
+        <p class="text-lg h-[300px] ">¡A disfrutar la fiesta!</p>
       </div>
     </div>
   </section>
 
   <!-- (1) Confirmación -->
-  <section class="py-12 px-6 text-center">
-    <h2 class="text-3xl gold mb-6">Confirma tu asistencia</h2>
+  <section class="py-10 px-6 mr-12 ml-12 text-center bg-white rounded-2xl h-[500px] ">
+    <h2 class="text-3xl gold mb-10">Confirma tu asistencia</h2>
     <form id="confirmForm" class="space-y-4">
       <input type="text" id="familia" placeholder="Nombre de la familia" class="w-full border p-2 rounded">
       <input type="number" id="numPersonas" placeholder="Número de personas" class="w-full border p-2 rounded">
-      <textarea id="nombres" placeholder="Nombres de los asistentes" class="w-full border p-2 rounded"></textarea>
-      <button type="submit" class="px-4 py-2 bg-[#d4af37] text-white rounded-lg">Enviar confirmación</button>
+      <textarea id="nombres" placeholder="Nombre de los invitados" class="w-full border py-12 text-center rounded"></textarea>
+      <button type="submit" class="px-4 py-2  bg-[#d4af37] text-white rounded-lg">Enviar confirmación</button>
     </form>
   </section>
 
@@ -156,8 +172,8 @@
   </section>
 
   <!-- (5) Galería carrusel -->
-  <section class="py-12 text-center">
-    <h2 class="text-3xl gold mb-6">Galería</h2>
+  <section class="py-12  mr-7 ml-7 ">
+    <h2 class="text-3xl gold text-center mb-6">Galería</h2>
     <div class="relative w-full overflow-hidden">
       <div id="carousel" class="flex transition-transform duration-700">
         <!-- Agregar fotos -->
@@ -174,7 +190,7 @@
   </section>
 
   <!-- (10) Regalos -->
-  <section class="py-12 px-6 text-center">
+  <section class="py-12 px-6 text-center mr-7 ml-7 text-center bg-white rounded-2xl h-[400px]">
     <h2 class="text-3xl gold mb-6">Regalos</h2>
     <p>El regalo es opcional, la asistencia una vezs sea confirmada se obligatoria.</p>
     <button id="toggleGift" class="mt-4 px-4 py-2 bg-[#d4af37] text-white rounded-lg">Ver número de cuenta</button>
